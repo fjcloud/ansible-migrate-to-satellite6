@@ -4,11 +4,12 @@
     sat6capsule: 
     activationkey: 
     organization:
+    
   tasks:
   
     - name: Check all required port are accesible
       wait_for:
-        host: {{ sat6capsule }}
+        host: "{{ sat6capsule }}"
         port: "{{ item }}"
         state: started
         delay: 0         
