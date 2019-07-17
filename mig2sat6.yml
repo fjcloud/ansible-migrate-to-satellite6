@@ -18,6 +18,7 @@
       - 80
       - 443
       - 5647
+      - 8443
       
     - name: Ensure RHN Tools are removed
       yum:
