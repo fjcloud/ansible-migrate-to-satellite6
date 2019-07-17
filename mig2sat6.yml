@@ -30,11 +30,6 @@
         activationkey: "{{ activationkey }}"
         org_id: "{{ organization }}"
 
-    - name: Enable Specific Repositories
-      shell: subscription-manager repos --enable="{{ item }}"
-      with_items: "{{ enable_repos }}"
-      when: enable_repos|length > 0
-
     - name: Ensure katello-agent is Installed
       yum:
         name: katello-agent
