@@ -1,10 +1,22 @@
 ---
 - hosts: localhost
   vars:
-    sat6server: 
+    sat6capsule: 
     activationkey: 
     organization:
   tasks:
+    - name: Check all required port are accesible
+      wait_for:
+        host: {{ sat6capsule }}
+        port: "{{ item }}"
+        state: started
+        delay: 0         
+        timeout: 3
+      with_items:
+      - 80
+      - 443
+      - 5647
+      
     - name: Ensure RHN Tools are removed
       yum:
         name: "{{ item }}"
@@ -15,7 +27,7 @@
 
     - name: Ensure katello-ca-consumer-latest is Installed
       yum: 
-        name: http://{{ sat6server }}/pub/katello-ca-consumer-latest.noarch.rpm
+        name: http://{{ sat6capsule }}/pub/katello-ca-consumer-latest.noarch.rpm
         state: present
 
     - name: Remove RHN System ID
