@@ -3,8 +3,7 @@
   vars:
     sat6server: 
     activationkey: 
-    organization: 
-    enable_repos: []
+    organization:
   tasks:
     - name: Ensure RHN Tools are removed
       yum:
