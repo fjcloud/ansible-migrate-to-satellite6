@@ -24,7 +24,7 @@
       yum:
         name: "{{ item }}"
         state: absent
-        enablerepo: "*"
+        disablerepo: "*"
       with_items:
         - yum-rhn-plugin
         - osad
